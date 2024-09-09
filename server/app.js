@@ -10,7 +10,9 @@ require('./util/db')
 const app = express()
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: (reqCallback) => {
+        reqCallback(null, true);
+    },
 }))
 
 app.use(express.json())
