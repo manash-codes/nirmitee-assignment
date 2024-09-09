@@ -1,5 +1,5 @@
 {
-    "version": 3,
+    "version": 2,
     "builds": [
         {
             "src": "*.js",
@@ -9,13 +9,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/"
-        }
-    ],
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/"
+            "dest": "/server"
         }
     ]
 }
