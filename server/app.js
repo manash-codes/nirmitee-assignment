@@ -9,7 +9,10 @@ require('./util/db')
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:5173',
+}))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json({ extended: false }))
@@ -21,7 +24,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.use('/api/events', eventRoutes)
+app.use('/events', eventRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server started on port ${process.env.PORT}`)
