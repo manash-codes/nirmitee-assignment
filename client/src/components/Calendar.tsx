@@ -11,7 +11,7 @@ import { Event } from '../types/Calendar.types';
 import { fetchEvents, updateEvent } from '../services/eventService';
 
 const localizerInstance = momentLocalizer(moment);
-const DnDCalendar = withDragAndDrop(BigCalendar);
+const DnDCalendar = withDragAndDrop<Event>(BigCalendar);
 type DnDType = CalendarProps<Event> & withDragAndDropProps<Event>;
 type CustomCalendarProps = Omit<DnDType, 'components' | 'localizer'>;
 
@@ -43,6 +43,7 @@ const Calendar = (props: CustomCalendarProps) => {
     return (
         <div className="p-4">
             <DnDCalendar
+                events={events}
                 onEventDrop={(props: EventInteractionArgs<Event>) => {
                     onChangeEventTime(props.start.toString(), props.end.toString(), props.event._id)
                     props.event.start = moment(props.event.start).toDate();
@@ -50,7 +51,6 @@ const Calendar = (props: CustomCalendarProps) => {
                     updateEvent(props.event);
                 }}
                 views={['month', 'week', 'day']}
-                events={events}
                 defaultView='week'
                 localizer={localizerInstance}
                 {...props}

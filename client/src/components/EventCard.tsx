@@ -11,7 +11,7 @@ const EventCard = ({ event }: EventProps) => {
     return (
         <div className="p-2">
             <p>{event.title}</p>
-            <p>{event.start}</p> - <p>{event.end}</p>
+            <p>{event.start.toString()}</p> - <p>{event.end.toString()}</p>
         </div>
     )
 }
