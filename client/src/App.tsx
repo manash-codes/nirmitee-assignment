@@ -1,17 +1,19 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import './index.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
-
-
   return (
-    <div className='font-euclid bg-neutral-200 antialiased flex'>
+    <div className='font-euclid bg-neutral-200 antialiased flex gap-4 overflow-hidden'>
       <Router>
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<div>Home</div>} />
-        </Routes>
+        <aside>
+          <Sidebar />
+        </aside>
+        <main className='w-full'>
+          <Routes>
+            <Route path="/" element={<div>Home</div>} />
+          </Routes>
+        </main>
       </Router>
     </div>
   )

@@ -7,7 +7,8 @@ import { TbMessageCircle } from "react-icons/tb";
 import { TbMoneybag } from "react-icons/tb";
 import { LuSettings2 } from "react-icons/lu";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 const items = [
@@ -46,6 +47,7 @@ const items = [
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(true)
+    const location = useLocation();
 
     return (
         <div className={`${isOpen ? 'w-72' : 'w-20'} duration-300 h-screen bg-neutral-100`}>
@@ -64,11 +66,15 @@ const Sidebar = () => {
             <div>
                 <ul>
                     {items.map((item, index) => (
-                        <li key={index} className="flex items-center gap-2 p-3 my-2 hover:bg-primary-100 hover:border-b-8 hover:border-b-primary-200 hover:text-white cursor-pointer ">
-                            <div className={`text-3xl ${isOpen ? 'ps-6' : 'ps-3'}  pe-4 `}>
-                                {item.icon}
-                            </div>
-                            {isOpen && <p>{item.name}</p>}
+                        <li key={index} >
+                            <Link to={item.path} key={index} className={`flex items-center gap-2 p-3 my-2
+                             hover:bg-primary-100 border-b-8 hover:text-white cursor-pointer
+                            ${location.pathname === item.path ? 'bg-primary-100 border-b-primary-200 text-white' : 'border-b-transparent'}`}>
+                                <div className={`text-3xl ${isOpen ? 'ps-6' : 'ps-3'}  pe-4 `}>
+                                    {item.icon}
+                                </div>
+                                {isOpen && <p>{item.name}</p>}
+                            </Link>
                         </li>
                     ))}
                 </ul>
