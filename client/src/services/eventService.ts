@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Event } from "../types/Calendar.types";
 import moment from "moment";
-const apiUrl = "http://localhost:5000";
+const apiUrl = import.meta.env.VITE_REACT_APP_URI || "http://localhost:5000";
 
 const api = axios.create({
     baseURL: apiUrl
