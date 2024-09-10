@@ -9,11 +9,7 @@ require('./util/db')
 
 const app = express()
 
-app.use(cors({
-    origin: (reqCallback) => {
-        reqCallback(null, true);
-    },
-}))
+app.use(cors())
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
