@@ -5,7 +5,7 @@ import eventService from '../services/eventService'
 export const EventContext = createContext<{
     events: Event[],
     // setEvents: React.Dispatch<React.SetStateAction<Event[]>>,
-    addEvent: (event: Event) => void,
+    addEvent: (event: Omit<Event, '_id'>) => void,
     updateEvent: (event: Event) => void
 }>({
     events: [],
@@ -26,9 +26,9 @@ export const EventProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
 
-    const addEvent = (event: Event) => {
-        setEvents([...events, event])
-        eventService.addEvent(event)
+    const addEvent = async (event: Omit<Event, '_id'>) => {
+        const newEvent = await eventService.addEvent(event)
+        setEvents([...events, newEvent])
     }
 
     const updateEvent = (event: Event) => {

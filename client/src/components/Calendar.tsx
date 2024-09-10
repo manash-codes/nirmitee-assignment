@@ -10,7 +10,6 @@ import { useCallback, useContext } from 'react';
 import { Event } from '../types/Calendar.types';
 import { EventContext } from '../context/EventContext';
 
-
 const localizerInstance = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop<Event>(BigCalendar);
 type DnDType = CalendarProps<Event> & withDragAndDropProps<Event>;
@@ -35,6 +34,8 @@ const Calendar = (props: CustomCalendarProps) => {
     return (
         <div className="py-4">
             <DnDCalendar
+                timeslots={2}
+                step={60}
                 events={events}
                 onEventDrop={onEventDrop}
                 views={['month', 'week', 'day']}

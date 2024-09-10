@@ -21,7 +21,7 @@ const fetchEvents = async () => {
     return events
 }
 
-const addEvent = async (newEvent: Event) => {
+const addEvent = async (newEvent: Omit<Event, '_id'>): Promise<Event> => {
     const response = await api.post("/events", newEvent);
     return response.data
 }
