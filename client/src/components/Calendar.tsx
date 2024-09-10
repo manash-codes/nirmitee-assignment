@@ -27,16 +27,16 @@ const Calendar = (props: CustomCalendarProps) => {
         },
         [updateEvent])
 
+    const onEventDrop = (props: EventInteractionArgs<Event>) => {
+        const { start, end, event } = props
+        onChangeEventTime(start.toString(), end.toString(), event)
+    }
+
     return (
         <div className="py-4">
             <DnDCalendar
                 events={events}
-                onEventDrop={async (props: EventInteractionArgs<Event>) => {
-                    onChangeEventTime(props.start.toString(), props.end.toString(), props.event)
-                    // props.event.start = moment(props.start).toDate();
-                    // props.event.end = moment(props.end).toDate();
-                    // await updateEvent(props.event);
-                }}
+                onEventDrop={onEventDrop}
                 views={['month', 'week', 'day']}
                 defaultView='week'
                 localizer={localizerInstance}
