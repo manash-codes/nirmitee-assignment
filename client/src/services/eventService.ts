@@ -7,7 +7,7 @@ const api = axios.create({
     baseURL: apiUrl
 })
 
-export const fetchEvents = async () => {
+const fetchEvents = async () => {
     const response = await api.get("/events");
 
     const events = response.data.map((event: Event) => {
@@ -21,12 +21,15 @@ export const fetchEvents = async () => {
     return events
 }
 
-export const addEvent = async (newEvent: Event) => {
+const addEvent = async (newEvent: Event) => {
     const response = await api.post("/events", newEvent);
     return response.data
 }
 
-export const updateEvent = async (event: Event) => {
+const updateEvent = async (event: Event) => {
+    console.log('event', event)
     const response = await api.put(`/events/${event._id}`, event);
     return response.data
 }
+
+export default { fetchEvents, addEvent, updateEvent }

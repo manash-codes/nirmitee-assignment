@@ -10,8 +10,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-
-const items = [
+export const items = [
     {
         name: "Overview",
         path: "/overview",
