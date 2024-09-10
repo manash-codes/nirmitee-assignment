@@ -3,6 +3,7 @@ import Calendar from './components/Calendar'
 import Sidebar from './components/Sidebar'
 import './index.css'
 import Navbar from './components/Navbar'
+import EventList from './components/EventList'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<div>Home</div>} />
             <Route path="/calendar" element={<Calendar />} />
+            <Route path="/event-list" element={<EventList />} />
           </Routes>
         </main>
       </Router>

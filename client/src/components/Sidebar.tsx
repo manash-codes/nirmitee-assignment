@@ -2,7 +2,7 @@ import { FaTooth } from "react-icons/fa6";
 import { RiMenuFold3Line2 } from "react-icons/ri";
 import { FaTachometerAlt } from "react-icons/fa";
 import { LuCalendarRange } from "react-icons/lu";
-import { IoPerson } from "react-icons/io5";
+import { IoListOutline } from "react-icons/io5";
 import { TbMessageCircle } from "react-icons/tb";
 import { TbMoneybag } from "react-icons/tb";
 import { LuSettings2 } from "react-icons/lu";
@@ -22,9 +22,9 @@ export const items = [
         icon: <LuCalendarRange />
     },
     {
-        name: "Patient List",
-        path: "/patient-list",
-        icon: <IoPerson />
+        name: "Event List",
+        path: "/event-list",
+        icon: <IoListOutline />
     },
     {
         name: "Messages",
