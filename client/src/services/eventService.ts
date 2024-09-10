@@ -32,4 +32,9 @@ const updateEvent = async (event: Event) => {
     return response.data
 }
 
-export default { fetchEvents, addEvent, updateEvent }
+const deleteEvent = async (id: string) => {
+    const response = await api.delete(`/events/${id}`);
+    return response.data
+}
+
+export default { fetchEvents, addEvent, updateEvent, deleteEvent }

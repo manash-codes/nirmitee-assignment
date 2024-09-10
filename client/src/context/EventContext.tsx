@@ -6,12 +6,14 @@ export const EventContext = createContext<{
     events: Event[],
     // setEvents: React.Dispatch<React.SetStateAction<Event[]>>,
     addEvent: (event: Omit<Event, '_id'>) => void,
-    updateEvent: (event: Event) => void
+    updateEvent: (event: Event) => void,
+    deleteEvent: (id: string) => void
 }>({
     events: [],
     // setEvents: () => { },
     addEvent: () => { },
-    updateEvent: () => { }
+    updateEvent: () => { },
+    deleteEvent: () => { }
 })
 
 export const EventProvider = ({ children }: { children: React.ReactNode }) => {
@@ -36,8 +38,13 @@ export const EventProvider = ({ children }: { children: React.ReactNode }) => {
         eventService.updateEvent(event)
     }
 
+    const deleteEvent = (id: string) => {
+        setEvents(events.filter(e => e._id !== id))
+        eventService.deleteEvent(id)
+    }
+
     return (
-        <EventContext.Provider value={{ events, addEvent, updateEvent }}>
+        <EventContext.Provider value={{ events, addEvent, updateEvent, deleteEvent }}>
             {children}
         </EventContext.Provider>
     )
